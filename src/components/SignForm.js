@@ -14,11 +14,16 @@ const PostForm = ({ title, button }) => {
         label="Email"
         value={input1}
         onChangeText={setInput1}
+        autoCapitalize="none"
+        autoCorrect={false}
       />
       <Input
+        secureTextEntry={true}
         label="Password"
         value={input2}
-        onChangeText={setInput2}        
+        onChangeText={setInput2}  
+        autoCapitalize="none"
+        autoCorrect={false}      
       />
       <Spacer>
         <Button
