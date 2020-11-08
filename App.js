@@ -18,6 +18,7 @@ const switchNav = createAnimatedSwitchNavigator({
     defaultNavigationOptions: {
       title: 'My Tracks App - LoginFlow',
     },
+    initialRouteName: 'Signup',
   }),
   mainFlow: createBottomTabNavigator({
     trackListFlow: createStackNavigator({
