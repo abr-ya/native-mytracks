@@ -1,10 +1,13 @@
-import React from "react";
-import { StyleSheet, View,  } from "react-native";
+import React, { useContext } from "react";
+import { StyleSheet, View, Text } from "react-native";
 import SignForm from '../components/SignForm';
+import { Context as AuthContext } from '../context/AuthContext';
 
 const SignupScreen = () => {
-  const buttonHandler = (mail, pass) => {
-    console.log('buttonHandler', mail, pass);
+  const { state, signup } = useContext(AuthContext);
+  const buttonHandler = (email, password) => {
+    console.log('SignUp Handler', email, password);
+    signup({ email, password });
   }
 
   const button = {
@@ -14,7 +17,7 @@ const SignupScreen = () => {
 
   return ( 
     <View style={styles.view} >
-      <SignForm title='Sign Up for Tracker' button={button} />
+      <SignForm title='Sign Up for Tracker' button={button} error={state.errorMessage} />
     </View>
   );
 };

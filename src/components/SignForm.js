@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { Text, Input, Button } from "react-native-elements";
 import Spacer from "./Spacer";
 
-const PostForm = ({ title, button }) => {
+const PostForm = ({ title, button, error }) => {
   const [input1, setInput1] = useState('');
   const [input2, setInput2] = useState('');
 
@@ -25,16 +25,21 @@ const PostForm = ({ title, button }) => {
         autoCapitalize="none"
         autoCorrect={false}      
       />
+      {!!error && <Spacer><Text style={styles.error}>{error}</Text></Spacer>}
       <Spacer>
         <Button
           title={button.title}
           onPress={() => button.handler(input1, input2)}
         />
-      </Spacer>  
+      </Spacer>
     </>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  error: {
+    color: 'red',
+  }
+});
 
 export default PostForm;
