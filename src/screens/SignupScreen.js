@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import SignForm from '../components/SignForm';
 import { Context as AuthContext } from '../context/AuthContext';
 
-const SignupScreen = () => {
+const SignupScreen = ({ navigation }) => {
   const { state, signup } = useContext(AuthContext);
   const buttonHandler = (email, password) => {
     console.log('SignUp Handler', email, password);
@@ -15,9 +15,22 @@ const SignupScreen = () => {
     handler: buttonHandler,
   };
 
+  const navPressHandler = () => {
+    console.log('SignUp navPressHandler');
+    navigation.navigate('Signin');
+  }
+
   return ( 
     <View style={styles.view} >
-      <SignForm title='Sign Up for Tracker' button={button} error={state.errorMessage} />
+      <SignForm
+        title='Sign Up for Tracker'
+        button={button}
+        error={state.errorMessage}
+        nav={{
+          press: navPressHandler,
+          text: 'Already have an account? Sign in instead',
+        }}
+      />
     </View>
   );
 };

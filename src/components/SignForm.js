@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { Text, Input, Button } from "react-native-elements";
 import Spacer from "./Spacer";
 
-const PostForm = ({ title, button, error }) => {
+const PostForm = ({ title, button, error, nav }) => {
   const [input1, setInput1] = useState('');
   const [input2, setInput2] = useState('');
 
@@ -32,6 +32,13 @@ const PostForm = ({ title, button, error }) => {
           onPress={() => button.handler(input1, input2)}
         />
       </Spacer>
+      {nav && (
+        <Spacer>
+          <TouchableOpacity onPress={nav.press}>
+            <Text style={styles.link}>{nav.text}</Text>
+          </TouchableOpacity>
+        </Spacer>
+      )}
     </>
   );
 }
@@ -39,7 +46,11 @@ const PostForm = ({ title, button, error }) => {
 const styles = StyleSheet.create({
   error: {
     color: 'red',
-  }
+  },
+  link: {
+    color: 'blue',
+    fontSize: 16,
+  },
 });
 
 export default PostForm;
