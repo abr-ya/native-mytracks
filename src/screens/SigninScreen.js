@@ -1,21 +1,51 @@
-import React, { useContext, useEffect } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React, { useContext } from "react";
+import { StyleSheet, View } from "react-native";
+import SignForm from '../components/SignForm';
+import { Context as AuthContext } from '../context/AuthContext';
 
-const SigninScreen = () => {
+const SigninScreen = ({ navigation }) => {
+  const { state, signin } = useContext(AuthContext);
+  const buttonHandler = (email, password) => {
+    console.log('SignIn Handler', email, password);
+    signin({ email, password });
+  }
+
+  const button = {
+    title: "Sign In",
+    handler: buttonHandler,
+  };
+
+  const navPressHandler = () => {
+    console.log('SignIn navPressHandler');
+    navigation.navigate('Signup');
+  }
+
   return ( 
     <View style={styles.view} >
-      <Text style={styles.header}>SigninScreen</Text>
+      <SignForm
+        title='Sign In to Your Account'
+        button={button}
+        error={state.errorMessage}
+        nav={{
+          press: navPressHandler,
+          text: 'Do not have an account? Sign up here',
+        }}
+      />
     </View>
   );
+};
+
+SigninScreen.navigationOptions = () => {
+  return {
+    headerShown: false,
+  };
 };
 
 const styles = StyleSheet.create({
   view: {
     flex: 1,
-    margin: 10,
-  },
-  header: {
-    fontSize: 24,
+    justifyContent: 'center',
+    marginBottom: 50,
   },
 });
 
