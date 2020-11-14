@@ -4,7 +4,7 @@ import SignForm from '../components/SignForm';
 import { Context as AuthContext } from '../context/AuthContext';
 
 const SigninScreen = ({ navigation }) => {
-  const { state, signin } = useContext(AuthContext);
+  const { state, signin, clearErrMes } = useContext(AuthContext);
   const buttonHandler = (email, password) => {
     console.log('SignIn Handler', email, password);
     signin({ email, password });
@@ -17,6 +17,7 @@ const SigninScreen = ({ navigation }) => {
 
   const navPressHandler = () => {
     console.log('SignIn navPressHandler');
+    clearErrMes();
     navigation.navigate('Signup');
   }
 

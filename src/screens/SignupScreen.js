@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { StyleSheet, View } from "react-native";
 import SignForm from '../components/SignForm';
 import { Context as AuthContext } from '../context/AuthContext';
 
 const SignupScreen = ({ navigation }) => {
-  const { state, signup } = useContext(AuthContext);
+  const { state, signup, clearErrMes } = useContext(AuthContext);
+
   const buttonHandler = (email, password) => {
     console.log('SignUp Handler', email, password);
     signup({ email, password });
@@ -17,6 +18,7 @@ const SignupScreen = ({ navigation }) => {
 
   const navPressHandler = () => {
     console.log('SignUp navPressHandler');
+    clearErrMes();
     navigation.navigate('Signin');
   }
 
