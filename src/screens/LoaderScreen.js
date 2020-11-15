@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Context as AuthContext } from '../context/AuthContext';
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 const LoaderScreen = ({ navigation }) => {
   const { tryLocalSignin } = useContext(AuthContext);
