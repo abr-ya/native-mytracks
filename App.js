@@ -10,7 +10,8 @@ import TrackCreateScreen from './src/screens/TrackCreateScreen';
 import TrackDetailScreen from './src/screens/TrackDetailScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
 import LoaderScreen from './src/screens/LoaderScreen';
-import { Provider as AuthProvider } from './src/context/AuthContext'
+import { Provider as AuthProvider } from './src/context/AuthContext';
+import { Provider as LocationProvider } from './src/context/LocationContext';
 import { setNavigator } from './src/navigationRef';
 
 const switchNav = createAnimatedSwitchNavigator({
@@ -43,6 +44,9 @@ const App = createAppContainer(switchNav);
 
 export default () => (
   <AuthProvider>
-    <App ref={(navigator) => { setNavigator(navigator) }} />
+    <LocationProvider>
+      <App ref={(navigator) => { setNavigator(navigator) }} />
+
+    </LocationProvider>
   </AuthProvider>
 );
