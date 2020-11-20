@@ -4,7 +4,7 @@ import MapView, { Polyline, Circle } from 'react-native-maps';
 import { Context as LocationContext } from '../context/LocationContext';
 
 const Map = () => {
-  const { state: { currentLocation }} = useContext(LocationContext);
+  const { state: { currentLocation, locations, isRecord }} = useContext(LocationContext);
 
   // индикатор почему-то не работает
   if (!currentLocation) {
@@ -15,7 +15,8 @@ const Map = () => {
   }
   
   const {latitude, longitude} = currentLocation.coords;
-  console.log(latitude, longitude);
+  //console.log(latitude, longitude);
+  console.log(isRecord, locations.length);
 
   return (
     <>
