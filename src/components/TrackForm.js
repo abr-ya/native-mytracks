@@ -10,6 +10,7 @@ const TrackForm = () => {
     stopRec,
     changeName,
   } = useContext(LocationContext);
+  //console.log(name, isRecord);
 
   return (
     <>

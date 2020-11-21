@@ -17,7 +17,7 @@ const locationReducer = (state, action) => {
   }
 };
 
-const changeName = dispatch => () => {
+const changeName = dispatch => (name) => {
   dispatch({ type: 'change_name', payload: name });
 };
 const startRec = dispatch => () => {
@@ -29,7 +29,6 @@ const stopRec = dispatch => () => {
 const addLocation = dispatch => (location, isRecord) => {
   dispatch({ type: 'add_current_location', payload: location });
   if (isRecord) {
-    console.log('LocCont AddPoint');
     dispatch({ type: 'add_location', payload: location });
   }
 };

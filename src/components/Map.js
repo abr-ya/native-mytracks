@@ -16,7 +16,7 @@ const Map = () => {
   
   const {latitude, longitude} = currentLocation.coords;
   //console.log(latitude, longitude);
-  console.log(isRecord, locations.length);
+  console.log('map', isRecord, locations.length);
 
   return (
     <>
@@ -35,7 +35,7 @@ const Map = () => {
           longitudeDelta: 0.01,
         }}
       >
-        {/* <Polyline coordinates={points} /> */}
+        <Polyline coordinates={locations.map(loc => loc.coords)} />
         <Circle
           center={{latitude, longitude}}
           radius={10}
