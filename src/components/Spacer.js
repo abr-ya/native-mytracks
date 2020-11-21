@@ -1,8 +1,15 @@
 import React from "react";
 import { StyleSheet, View,  } from "react-native";
 
-const Spacer = ({ children }) => (
-  <View style={styles.spacer}>{children}</View>
+const Spacer = ({ children, style }) => (
+  <View
+    style={{
+      ...styles.spacer,
+      ...style,
+    }}
+  >
+    {children}
+  </View>
 );
 
 const styles = StyleSheet.create({

@@ -2,14 +2,17 @@ import React, { useContext } from "react";
 import { Input, Button } from "react-native-elements";
 import { StyleSheet, View } from "react-native";
 import { Context as LocationContext } from '../context/LocationContext';
+import Spacer from './Spacer';
+import useSaveTrack from '../hooks/useSaveTrack';
 
 const TrackForm = () => {
   const {
-    state: { name, isRecord },
+    state: { name, isRecord, locations },
     startRec,
     stopRec,
     changeName,
   } = useContext(LocationContext);
+  const [saveTrack] = useSaveTrack();
   //console.log(name, isRecord);
 
   return (
@@ -24,6 +27,13 @@ const TrackForm = () => {
           title={`${isRecord ? 'Stop' : 'Start'} Recording`}
           onPress={isRecord ? stopRec : startRec}
         />
+        {
+          !isRecord && locations.length
+            ? <Spacer style={styles.but2}>
+                <Button title='Save Track' onPress={saveTrack} />
+              </Spacer>
+            : null
+        }
       </View>
     </>
   );
@@ -33,6 +43,10 @@ const styles = StyleSheet.create({
   add: {
     margin: 10,
     marginTop: -10,
+  },
+  but2: {
+    margin: 0,
+    marginTop: 20,
   },
 });
 

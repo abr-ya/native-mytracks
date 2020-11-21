@@ -28,6 +28,8 @@ const Map = () => {
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
+        //нужно для движения экрана "за точкой"
+        //у него пока нет
         region={{
           latitude,
           longitude,
