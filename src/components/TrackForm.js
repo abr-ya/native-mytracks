@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Input, Button } from "react-native-elements";
+import { Input, Button, Text } from "react-native-elements";
 import { StyleSheet, View } from "react-native";
 import { Context as LocationContext } from '../context/LocationContext';
 import Spacer from './Spacer';
@@ -30,9 +30,17 @@ const TrackForm = () => {
         {
           !isRecord && locations.length
             ? <Spacer style={styles.but2}>
-                <Button title='Save Track' onPress={saveTrack} />
+                <Button
+                  title='Save Track'
+                  onPress={saveTrack}
+                  disabled={!name}
+                />
               </Spacer>
             : null
+        }
+        { locations.length
+          ? <Text>в памяти {locations.length} точек</Text>
+          : <Text>в памяти нет точек</Text>
         }
       </View>
     </>
