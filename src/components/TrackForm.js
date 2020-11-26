@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { Input, Button, Text } from "react-native-elements";
-import { StyleSheet, View } from "react-native";
+import React, { useContext } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Input, Button, Text } from 'react-native-elements';
 import { Context as LocationContext } from '../context/LocationContext';
 import Spacer from './Spacer';
 import useSaveTrack from '../hooks/useSaveTrack';

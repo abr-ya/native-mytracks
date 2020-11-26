@@ -27,7 +27,7 @@ const switchNav = createAnimatedSwitchNavigator({
     initialRouteName: 'Signup',
   }),
   mainFlow: createBottomTabNavigator({
-    trackListFlow: createStackNavigator({
+    MyTracks: createStackNavigator({
       List: TrackListScreen,
       Detail: TrackDetailScreen,
     }),

@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { ActivityIndicator, Text, StyleSheet } from "react-native";
+import React, { useContext } from 'react';
+import { ActivityIndicator, Text, StyleSheet } from 'react-native';
 import MapView, { Polyline, Circle } from 'react-native-maps';
 import { Context as LocationContext } from '../context/LocationContext';
 
@@ -13,9 +13,6 @@ const Map = () => {
       <ActivityIndicator  style={styles.indicator} />
     </>
   }
-  
-  const {latitude, longitude} = currentLocation.coords;
-  //console.log(latitude, longitude);
   console.log('map', isRecord, locations.length);
 
   return (
@@ -23,23 +20,23 @@ const Map = () => {
       <MapView
         style={styles.map}
         initialRegion={{
-          latitude,
-          longitude,
+          //latitude,
+          //longitude,
+          ...currentLocation.coords,
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
         //нужно для движения экрана "за точкой"
         //у него пока нет
         region={{
-          latitude,
-          longitude,
+          ...currentLocation.coords,
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
       >
         <Polyline coordinates={locations.map(loc => loc.coords)} />
         <Circle
-          center={{latitude, longitude}}
+          center={currentLocation.coords}
           radius={10}
           strokeColor='rgba(158, 158, 255, 1.0)'
           fillColor='rgba(158, 158, 255, 0.5)'

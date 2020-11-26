@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { StyleSheet, View, Text, FlatList, TouchableOpacity } from "react-native";
+import React, { useContext } from 'react';
+import { StyleSheet, View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { NavigationEvents } from 'react-navigation';
 import { Context as TrackContext } from '../context/TrackContext';
@@ -10,7 +10,10 @@ const TrackListScreen = ({ navigation }) => {
 
   return ( 
     <View style={styles.view} >
-      <NavigationEvents onWillFocus={fetchTracks} />
+      <NavigationEvents
+        onWillFocus={fetchTracks}
+        onDidBlur={() => console.log('TrackListScreen onDidBlur')}
+      />
       <Text style={styles.header}>TrackListScreen</Text>
       <FlatList
         data={state}
