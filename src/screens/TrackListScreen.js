@@ -14,7 +14,6 @@ const TrackListScreen = ({ navigation }) => {
         onWillFocus={fetchTracks}
         onDidBlur={() => console.log('TrackListScreen onDidBlur')}
       />
-      <Text style={styles.header}>TrackListScreen</Text>
       <FlatList
         data={state}
         keyExtractor={item => item._id}
@@ -33,13 +32,14 @@ const TrackListScreen = ({ navigation }) => {
   );
 };
 
+TrackListScreen.navigationOptions = {
+  title: 'My Tracks',
+};
+
 const styles = StyleSheet.create({
   view: {
     flex: 1,
     margin: 10,
-  },
-  header: {
-    fontSize: 24,
   },
 });
 

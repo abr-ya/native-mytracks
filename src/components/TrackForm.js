@@ -39,8 +39,8 @@ const TrackForm = () => {
             : null
         }
         { locations.length
-          ? <Text>в памяти {locations.length} точек</Text>
-          : <Text>в памяти нет точек</Text>
+          ? <Text>we have {locations.length} points</Text>
+          : <Text>we haven't any points</Text>
         }
       </View>
     </>
